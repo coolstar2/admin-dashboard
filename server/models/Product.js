@@ -1,12 +1,12 @@
-import mongoose from 'mongoose'
+import connectDB from '../../database/connect.js';
+const sql = connectDB();
 
-const productSchema = new mongoose.Schema({
-    name:String,
-    price:Number,
-    description:String,
-    rating:Number,
-    supply:Number
-},{timestamps:true})
-
-const Product = mongoose.model("Product",productSchema)
-export default Product
+export const getProducts = async (req, res) => {
+  try {
+    const products = await sql`SELECT id, name, price, description, rating, supply FROM products`;
+    res.status(200).json(products);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    res.status(500).json({ message: "Error fetching products" });
+  }
+};
