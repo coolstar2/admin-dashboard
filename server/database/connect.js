@@ -1,9 +1,9 @@
-import mongoose from 'mongoose'
+import postgres from 'postgres'
 
 const connectDB = () =>{
     try{
-        mongoose.set('strictQuery',false);
-        const con = mongoose.connect(process.env.MONGO_URI,{
+        postgres.set('strictQuery',false);
+        const con = postgres.connect(process.env.POSTGRES_URI,{
             useNewUrlParser:true,
             useUnifiedTopology:true,
             // useCreateIndex:true,
