@@ -1,4 +1,4 @@
-import connectDB from '../../database/connect.js';
+import connectDB from '../database/connect.js';
 const sql = connectDB();
 export const getUserPerformance = async (req, res) => {
   try {
