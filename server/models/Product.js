@@ -1,6 +1,3 @@
-import connectDB from '../../database/connect.js';
-const sql = connectDB();
-
 export const getProducts = async (req, res) => {
   try {
     const products = await sql`SELECT id, name, price, description, rating, supply FROM products`;
